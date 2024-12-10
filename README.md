@@ -80,6 +80,12 @@ done
 
 **Шаг 5.** Создайте коммит `merge: use shift` и отправьте изменения в репозиторий. 
 
+### Решение:
+
+На данный момент имеем такую ситуацию:
+
+![img](https://github.com/valery-dubinin/githw/blob/main/img/01.png)
+
 #### Изменим main  
 
 **Шаг 1.** Вернитесь в ветку `main`. 
@@ -102,6 +108,13 @@ echo "====="
 В этом случае скрипт тоже будет отображать каждый параметр в новой строке. 
 
 **Шаг 3.** Отправляем изменённую ветку `main` в репозиторий.
+
+### Решение:
+
+Теперь имеем такую ситуацию:
+
+![img](https://github.com/valery-dubinin/githw/blob/main/img/02.png)
+
 
 #### Подготовка файла rebase.sh  
 
@@ -129,6 +142,13 @@ echo "====="
 
 **Шаг 5.** И сделаем ещё один коммит `git-rebase 2` с пушем, заменив `echo "Parameter: $param"` на `echo "Next parameter: $param"`.
 
+### Решение:
+
+Теперь имеем такую ситуацию:
+
+![img](https://github.com/valery-dubinin/githw/blob/main/img/03.png)
+
+
 #### Промежуточный итог  
 
 Мы сэмулировали типичную ситуации в разработке кода, когда команда разработчиков работала над одним и тем же участком кода, и кто-то из разработчиков 
@@ -138,7 +158,11 @@ echo "====="
 Если всё было сделано правильно, то на странице `network` в GitHub, находящейся по адресу 
 `https://github.com/ВАШ_ЛОГИН/ВАШ_РЕПОЗИТОРИЙ/network`, будет примерно такая схема:
   
-![Созданы обе ветки](img/01.png)
+### Решение:
+
+Теперь имеем такую ситуацию:
+
+![img](https://github.com/valery-dubinin/githw/blob/main/img/05.png)
 
 #### Merge
 
@@ -157,9 +181,13 @@ Writing objects: 100% (1/1), 223 bytes | 223.00 KiB/s, done.
 Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
 ```  
 
+### Решение
+
 В результате получаем такую схему:
   
-![Первый мерж](img/02.png)
+![img](https://github.com/valery-dubinin/githw/blob/main/img/06.png)
+
+![img](https://github.com/valery-dubinin/githw/blob/main/img/07.png)
 
 #### Rebase
 
@@ -180,6 +208,9 @@ You can instead skip this commit: run "git rebase --skip".
 To abort and get back to the state before "git rebase", run "git rebase --abort".
 Could not apply dc4688f... git 2.3 rebase @ instead *
 ``` 
+### Все так:
+
+![img](https://github.com/valery-dubinin/githw/blob/main/img/08.png)
 
 Если посмотреть содержимое файла `rebase.sh`, то увидим метки, оставленные Git для решения конфликта:
 
@@ -198,6 +229,10 @@ for param in "$@"; do
 done
 ```
 
+### Все так:
+
+![img](https://github.com/valery-dubinin/githw/blob/main/img/09.png)
+
 **Шаг 3.** Удалим метки, отдав предпочтение варианту:
 
 ```bash
@@ -207,6 +242,11 @@ echo "\$@ Parameter #$count = $param"
 **Шаг 4.** Сообщим Git, что конфликт решён `git add rebase.sh` и продолжим rebase `git rebase --continue`.
 
 **Шаг 5.** Опять получим конфликт в файле `rebase.sh` при попытке применения нашего второго коммита. Давайте разрешим конфликт, оставив строчку `echo "Next parameter: $param"`.
+
+### Все так:
+
+![img](https://github.com/valery-dubinin/githw/blob/main/img/10.png)
+
 
 **Шаг 6.** Далее опять сообщаем Git о том, что конфликт разрешён — `git add rebase.sh` — и продолжим rebase — `git rebase --continue`.
 
@@ -264,6 +304,11 @@ To github.com:andrey-borue/devops-netology.git
 Branch 'git-rebase' set up to track remote branch 'git-rebase' from 'origin'.
 ```
 
+### Пушим принудительно
+
+![img](https://github.com/valery-dubinin/githw/blob/main/img/11.png)
+
+
 **Шаг 9**. Теперь можно смержить ветку `git-rebase` в main без конфликтов и без дополнительного мерж-комита простой перемоткой: 
 
 ```
@@ -277,6 +322,12 @@ Fast-forward
  branching/rebase.sh | 3 +--
  1 file changed, 1 insertion(+), 2 deletions(-)
 ```
+
+### Что получили:
+
+![img](https://github.com/valery-dubinin/githw/blob/main/img/12.png)
+
+![img](https://github.com/valery-dubinin/githw/blob/main/img/13.png)
 
 *В качестве результата работы по всем заданиям приложите ссылку на .md-файл в вашем репозитории.*
  
